@@ -11,9 +11,11 @@ import {
 import { NewsTask } from '../todos/NewsTask'
 
 const Home = (props) => (
-  <>
-    <NewsTask />
-  </>
+  <div className="container">
+    <div className="border border-dark">
+      <NewsTask />
+    </div>
+  </div>
 )
 
 const mapStateToProps = ({ counter }) => ({
