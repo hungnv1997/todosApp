@@ -9,11 +9,17 @@ import {
   decrementAsync,
 } from '../../modules/counter'
 import { NewsTask } from '../todos/NewsTask'
+import { TodoList } from '../todos/TodoList'
 
 const Home = (props) => (
   <div className="container">
-    <div className="border border-dark">
-      <NewsTask />
+    <div className="row">
+      <div className="col-md border border-dark">
+        <NewsTask />
+      </div>
+      <div className="col-md border border-dark">
+        <TodoList />
+      </div>
     </div>
   </div>
 )

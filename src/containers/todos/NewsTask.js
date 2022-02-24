@@ -11,7 +11,7 @@ export const NewsTask = (props) => {
         <div class="col-sm">
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="Add new task..."
             name="todo task"
           />
@@ -25,7 +25,7 @@ export const NewsTask = (props) => {
       </div>
       <div className="row mt-3">
         <div className="col-sm fs-6">
-          <label className="form-label">Due Date</label>
+          <label className="form-label mb-2">Due Date</label>
           <DatePicker
             selected={new Date()}
             // onChange={this.handleChange}
@@ -34,8 +34,8 @@ export const NewsTask = (props) => {
           />
         </div>
         <div className="col-sm">
-          <label className="form-label">Piority</label>
-          <select className="w-100 p-1 fs-6">
+          <label className="form-label  mb-2">Piority</label>
+          <select className="w-100 p-1 fs-6 mt-0">
             <option value="Low">Low</option>
             <option value="Normal" selected>
               Normal
