@@ -6,9 +6,8 @@ export const NewsTask = (props) => {
   return (
     <div className="container">
       <h1 className="text-center">New Task</h1>
-
-      <div class="row">
-        <div class="col-sm">
+      <div className="row">
+        <div className="col-sm">
           <input
             type="text"
             className="form-control"

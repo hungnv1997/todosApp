@@ -1,31 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDatePicker from 'react-datepicker'
 import { connect } from 'react-redux'
 
-export const TodoItemDetail = (props) => {
+export const TodoItemDetail = ({ todoObject }) => {
+  const { id, name, description, priority, done, dueDate } = todoObject
+  const [nameTodo, setNameTodo] = useState(name)
+  const [valueDescription, setValueDescription] = useState(description)
+  //handle event
+  const onChangeInput = (e) => {
+    if (e.target.name === 'todo-task') {
+      setNameTodo(e.target.value)
+    } else if (e.target.name === 'description') {
+      setValueDescription()
+    }
+  }
   return (
     <div className="container border-top border-dark pt-5">
-      <div class="row">
-        <div class="col-sm">
+      <div className="row">
+        <div className="col-sm">
           <input
             type="text"
             className="form-control"
+            value={nameTodo}
+            onChange={onChangeInput}
             placeholder="Add new task..."
-            name="todo task"
+            name="todo-task"
           />
         </div>
       </div>
       <div className="row mt-3">
         <div className="col-sm">
           <label className="form-label">Description</label>
-          <textarea className="w-100" name="description" rows="3"></textarea>
+          <textarea
+            className="w-100"
+            name="description"
+            rows="3"
+            onChange={onChangeInput}
+            value={valueDescription}></textarea>
         </div>
       </div>
       <div className="row mt-3">
         <div className="col-sm fs-6">
           <label className="form-label mb-2">Due Date</label>
           <ReactDatePicker
-            selected={new Date()}
+            selected={dueDate}
             // onChange={this.handleChange}
             dateFormat="d MMMM yyyy"
             minDate={new Date()}

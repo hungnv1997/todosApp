@@ -1,8 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { NewsTask } from './NewsTask'
 import TodoItem from './TodoItem'
-import { TodoItemDetail } from './TodoItemDetail'
 
 export const TodoList = (props) => {
   const todoList = [
@@ -11,6 +9,7 @@ export const TodoList = (props) => {
       name: 'Code Todo',
       description: 'Code Todo App and push Github',
       priority: 'Normal',
+      dueDate: '',
       done: false,
     },
     {
@@ -18,6 +17,7 @@ export const TodoList = (props) => {
       name: 'Eat lunch',
       description: 'Eat lunch',
       priority: 'Low',
+      dueDate: '',
       done: true,
     },
   ]
@@ -26,40 +26,25 @@ export const TodoList = (props) => {
     <div className="container">
       <h1 className="text-center">To Do List</h1>
       {/* Search input */}
-      <div class="row">
-        <div class="col-sm">
+      <div className="row">
+        <div className="col-sm">
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="Search..."
             name="search-task"
           />
         </div>
       </div>
       {/* todo list */}
-      <div class="row mt-3">
+      <div className="row mt-3">
         <div className="col-sm">
           {todoList &&
+            todoList.length > 0 &&
             todoList.map((item) => {
               return (
-                <div className="border border-dark my-2 ">
-                  <div className="row p-3">
-                    <div className=" col-sm d-flex flex-row align-items-center">
-                      <div className="px-2">
-                        <input className="w-10" type="checkbox" name="" id="" />
-                      </div>
-                      <TodoItem name={item.name} />
-                    </div>
-                    <div className=" col-sm d-flex flex-row justify-content-end align-items-center">
-                      <button className="btn btn-sm btn-info opacity-75 text-white px-3 ">
-                        Detail
-                      </button>
-                      <button className="btn btn-sm btn-danger opacity-75 mx-2">
-                        Remove
-                      </button>
-                    </div>
-                  </div>
-                  <TodoItemDetail />
+                <div className="border border-dark my-2 " key={item.id}>
+                  <TodoItem todoObject={item} />
                 </div>
               )
             })}
