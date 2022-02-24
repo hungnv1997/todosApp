@@ -2,15 +2,31 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { TodoItemDetail } from './TodoItemDetail'
 
-export const TodoItem = ({ todoObject }) => {
+export const TodoItem = ({ todoObject, setArrCheckbox, arrCheckbox }) => {
   const [showDetail, setShowDetail] = useState(false)
   const { name, id } = todoObject
+  const onChangeCheckbox = (e) => {
+    if (e.target.checked) {
+      setArrCheckbox([...arrCheckbox, todoObject])
+    } else if (e.target.checked === false) {
+      let newArr = arrCheckbox.filter((item) => {
+        return item.id !== todoObject.id
+      })
+      setArrCheckbox(newArr)
+    }
+  }
   return (
     <>
       <div className="row p-3">
         <div className=" col-sm d-flex flex-row align-items-center">
           <div className="px-2">
-            <input className="w-10" type="checkbox" name="" id="" />
+            <input
+              className="w-10"
+              type="checkbox"
+              name=""
+              id=""
+              onChange={onChangeCheckbox}
+            />
           </div>
           <div>{name}</div>
         </div>

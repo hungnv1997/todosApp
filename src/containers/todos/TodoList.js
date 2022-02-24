@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import BulkActions from './BulkActions'
 import TodoItem from './TodoItem'
-
+import './todos.css'
 export const TodoList = (props) => {
   const todoList = [
     {
@@ -21,9 +22,9 @@ export const TodoList = (props) => {
       done: true,
     },
   ]
-
+  const [arrCheckbox, setArrCheckbox] = useState([])
   return (
-    <div className="container">
+    <div className="container ">
       <h1 className="text-center">To Do List</h1>
       {/* Search input */}
       <div className="row">
@@ -44,18 +45,20 @@ export const TodoList = (props) => {
             todoList.map((item) => {
               return (
                 <div className="border border-dark my-2 " key={item.id}>
-                  <TodoItem todoObject={item} />
+                  <TodoItem
+                    todoObject={item}
+                    setArrCheckbox={setArrCheckbox}
+                    arrCheckbox={arrCheckbox}
+                  />
                 </div>
               )
             })}
         </div>
       </div>
+      {/* Bulk Action */}
+      {arrCheckbox.length > 0 && <BulkActions />}
     </div>
   )
 }
 
-const mapStateToProps = (state) => ({})
-
-const mapDispatchToProps = {}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
+export default TodoList

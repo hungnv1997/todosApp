@@ -10,14 +10,14 @@ import {
 } from '../../modules/counter'
 import { NewsTask } from '../todos/NewsTask'
 import { TodoList } from '../todos/TodoList'
-
+import '../todos/todos.css'
 const Home = (props) => (
   <div className="container">
     <div className="row">
       <div className="col-md border border-dark">
         <NewsTask />
       </div>
-      <div className="col-md border border-dark">
+      <div className="col-md border border-dark todosList pb-5">
         <TodoList />
       </div>
     </div>

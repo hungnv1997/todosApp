@@ -1,0 +1,11 @@
+.todosList {
+  position: relative;
+}
+.todosList--bulkAction {
+  position: absolute;
+  height: 80px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #e0e0e0;
+}
