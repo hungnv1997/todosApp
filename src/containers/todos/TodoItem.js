@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { deleteTodo } from '../../modules/redux/actions'
 import { TodoItemDetail } from './TodoItemDetail'
 
 export const TodoItem = ({ todoObject, setArrCheckbox, arrCheckbox }) => {
   const [showDetail, setShowDetail] = useState(false)
+  const dispatch = useDispatch()
   const { name, id } = todoObject
+  //handle event
   const onChangeCheckbox = (e) => {
     if (e.target.checked) {
       setArrCheckbox([...arrCheckbox, todoObject])
@@ -14,6 +17,10 @@ export const TodoItem = ({ todoObject, setArrCheckbox, arrCheckbox }) => {
       })
       setArrCheckbox(newArr)
     }
+  }
+  //delete todo
+  const handleDeleteTodo = () => {
+    dispatch(deleteTodo(id))
   }
   return (
     <>
@@ -36,7 +43,9 @@ export const TodoItem = ({ todoObject, setArrCheckbox, arrCheckbox }) => {
             onClick={() => setShowDetail(!showDetail)}>
             Detail
           </button>
-          <button className="btn btn-sm btn-danger opacity-75 mx-2">
+          <button
+            className="btn btn-sm btn-danger opacity-75 mx-2"
+            onClick={handleDeleteTodo}>
             Remove
           </button>
         </div>

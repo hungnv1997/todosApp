@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import { useDispatch } from 'react-redux'
 import { addTodo } from '../../modules/redux/actions'
@@ -46,6 +46,14 @@ export const NewsTask = () => {
     const id = uuidv4()
     setNewTodo({ ...newTodo, id: id })
     dispatch(addTodo(newTodo))
+    setNewTodo({
+      id: uuidv4(),
+      name: '',
+      description: '',
+      priority: 'Normal',
+      done: false,
+      dueDate: new Date(),
+    })
   }
   return (
     <div className="container">

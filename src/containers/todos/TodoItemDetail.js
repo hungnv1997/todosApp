@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import ReactDatePicker from 'react-datepicker'
-import { connect } from 'react-redux'
 
 export const TodoItemDetail = ({ todoObject }) => {
-  const { id, name, description, priority, done, dueDate } = todoObject
+  const { priority } = todoObject
   const [updateTodo, setUpdateTodo] = useState(todoObject)
   //handle event
   const onChangeInput = (e) => {
@@ -76,8 +75,4 @@ export const TodoItemDetail = ({ todoObject }) => {
   )
 }
 
-const mapStateToProps = (state) => ({})
-
-const mapDispatchToProps = {}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoItemDetail)
+export default TodoItemDetail
