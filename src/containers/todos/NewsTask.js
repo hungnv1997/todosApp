@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { addTodo } from '../../modules/redux/actions'
 import { ValidateFormTodo } from './const'
 
 export const NewsTask = (props) => {
@@ -12,6 +13,7 @@ export const NewsTask = (props) => {
     dueDate: new Date(),
   })
   const [validateName, setValidateName] = useState({ name: false })
+  const dispatch = useDispatch()
   //handle event
   const onChangeInput = (e) => {
     if (e.target.name === 'todo-task') {
@@ -39,7 +41,7 @@ export const NewsTask = (props) => {
       setValidateName(validate)
       return
     }
-    console.log('save')
+    // dispatch(addTodo(newTodo))
   }
   return (
     <div className="container">
@@ -103,8 +105,4 @@ export const NewsTask = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({})
-
-const mapDispatchToProps = {}
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewsTask)
+export default NewsTask
