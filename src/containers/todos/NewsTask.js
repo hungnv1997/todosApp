@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import { connect } from 'react-redux'
+import { ValidateFormTodo } from './const'
 
 export const NewsTask = (props) => {
   const [newTodo, setNewTodo] = useState({
@@ -10,10 +11,12 @@ export const NewsTask = (props) => {
     done: false,
     dueDate: new Date(),
   })
+  const [validateName, setValidateName] = useState({ name: false })
   //handle event
   const onChangeInput = (e) => {
     if (e.target.name === 'todo-task') {
       setNewTodo({ ...newTodo, name: e.target.value })
+      setValidateName({ ...validateName, name: false })
     } else if (e.target.name === 'description') {
       setNewTodo({ ...newTodo, description: e.target.value })
     }
@@ -25,7 +28,19 @@ export const NewsTask = (props) => {
     console.log(e.target.value)
     setNewTodo({ ...newTodo, priority: e.target.value })
   }
-  console.log(newTodo)
+  //Add task
+  const handleAddNewTodo = () => {
+    const valueValidate = ValidateFormTodo([
+      { type: 'name', value: newTodo.name },
+    ])
+    if (valueValidate.includes(true)) {
+      let validate = Object.assign({}, validateName)
+      validate.name = valueValidate[0]
+      setValidateName(validate)
+      return
+    }
+    console.log('save')
+  }
   return (
     <div className="container">
       <h1 className="text-center">New Task</h1>
@@ -39,6 +54,7 @@ export const NewsTask = (props) => {
             value={newTodo.name}
             onChange={onChangeInput}
           />
+          {validateName.name && <p className="text-danger">Name is required</p>}
         </div>
       </div>
       <div className="row mt-3">
@@ -76,7 +92,11 @@ export const NewsTask = (props) => {
       </div>
       <div className="row mt-5 ">
         <div className="col-sm pb-5">
-          <button className="btn btn-success opacity-75 w-100">Add</button>
+          <button
+            className="btn btn-success opacity-75 w-100"
+            onClick={handleAddNewTodo}>
+            Add
+          </button>
         </div>
       </div>
     </div>
