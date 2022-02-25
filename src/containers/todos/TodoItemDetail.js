@@ -4,15 +4,21 @@ import { connect } from 'react-redux'
 
 export const TodoItemDetail = ({ todoObject }) => {
   const { id, name, description, priority, done, dueDate } = todoObject
-  const [nameTodo, setNameTodo] = useState(name)
-  const [valueDescription, setValueDescription] = useState(description)
+  const [updateTodo, setUpdateTodo] = useState(todoObject)
   //handle event
   const onChangeInput = (e) => {
     if (e.target.name === 'todo-task') {
-      setNameTodo(e.target.value)
+      setUpdateTodo({ ...updateTodo, name: e.target.value })
     } else if (e.target.name === 'description') {
-      setValueDescription()
+      setUpdateTodo({ ...updateTodo, description: e.target.value })
     }
+  }
+  const handleChangeDate = (e) => {
+    setUpdateTodo({ ...updateTodo, dueDate: e })
+  }
+  const handleChangeSelect = (e) => {
+    console.log(e.target.value)
+    setUpdateTodo({ ...updateTodo, priority: e.target.value })
   }
   return (
     <div className="container border-top border-dark pt-5">
@@ -21,7 +27,7 @@ export const TodoItemDetail = ({ todoObject }) => {
           <input
             type="text"
             className="form-control"
-            value={nameTodo}
+            value={updateTodo.name}
             onChange={onChangeInput}
             placeholder="Add new task..."
             name="todo-task"
@@ -36,26 +42,27 @@ export const TodoItemDetail = ({ todoObject }) => {
             name="description"
             rows="3"
             onChange={onChangeInput}
-            value={valueDescription}></textarea>
+            value={updateTodo.description}></textarea>
         </div>
       </div>
       <div className="row mt-3">
         <div className="col-sm fs-6">
           <label className="form-label mb-2">Due Date</label>
           <ReactDatePicker
-            selected={dueDate}
-            // onChange={this.handleChange}
+            selected={updateTodo.dueDate}
+            onChange={handleChangeDate}
             dateFormat="d MMMM yyyy"
             minDate={new Date()}
           />
         </div>
         <div className="col-sm">
           <label className="form-label  mb-2">Piority</label>
-          <select className="w-100 p-1 fs-6 mt-0">
+          <select
+            className="w-100 p-1 fs-6 mt-0"
+            defaultValue={priority}
+            onChange={handleChangeSelect}>
             <option value="Low">Low</option>
-            <option value="Normal" selected>
-              Normal
-            </option>
+            <option value="Normal">Normal</option>
             <option value="Hight">Hight</option>
           </select>
         </div>

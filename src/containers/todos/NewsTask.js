@@ -34,11 +34,9 @@ export const NewsTask = (props) => {
         </div>
         <div className="col-sm">
           <label className="form-label  mb-2">Piority</label>
-          <select className="w-100 p-1 fs-6 mt-0">
+          <select className="w-100 p-1 fs-6 mt-0" defaultValue={'Normal'}>
             <option value="Low">Low</option>
-            <option value="Normal" selected>
-              Normal
-            </option>
+            <option value="Normal">Normal</option>
             <option value="Hight">Hight</option>
           </select>
         </div>
