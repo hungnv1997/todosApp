@@ -3,9 +3,11 @@ import DatePicker from 'react-datepicker'
 import { useDispatch } from 'react-redux'
 import { addTodo } from '../../modules/redux/actions'
 import { ValidateFormTodo } from './const'
+import { v4 as uuidv4 } from 'uuid'
 
-export const NewsTask = (props) => {
+export const NewsTask = () => {
   const [newTodo, setNewTodo] = useState({
+    id: '',
     name: '',
     description: '',
     priority: 'Normal',
@@ -41,7 +43,9 @@ export const NewsTask = (props) => {
       setValidateName(validate)
       return
     }
-    // dispatch(addTodo(newTodo))
+    const id = uuidv4()
+    setNewTodo({ ...newTodo, id: id })
+    dispatch(addTodo(newTodo))
   }
   return (
     <div className="container">

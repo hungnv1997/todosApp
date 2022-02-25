@@ -1,27 +1,10 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import BulkActions from './BulkActions'
 import TodoItem from './TodoItem'
 import './todos.css'
-export const TodoList = (props) => {
-  const todoList = [
-    {
-      id: 1,
-      name: 'Code Todo',
-      description: 'Code Todo App and push Github',
-      priority: 'Normal',
-      dueDate: '',
-      done: false,
-    },
-    {
-      id: 2,
-      name: 'Eat lunch',
-      description: 'Eat lunch',
-      priority: 'Low',
-      dueDate: '',
-      done: true,
-    },
-  ]
+export const TodoList = () => {
+  const todoList = useSelector((state) => state.TodosReducer.listTask)
   const [arrCheckbox, setArrCheckbox] = useState([])
   return (
     <div className="container ">
