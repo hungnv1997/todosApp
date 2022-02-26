@@ -1,19 +1,11 @@
-<p align="center"><a href="https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f"><img src="https://i.imgur.com/PATsTx2.png" title="View tutorial" alt="React, React Router, Redux and Redux Thunk" width="900"></a></p>
-
-* Tutorial: [Getting started with create-react-app, Redux, React Router & Redux Thunk](https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f)
-
-## Installation
-
-```bash
-git clone https://github.com/notrab/create-react-app-redux.git
-cd create-react-app-redux
-yarn
-```
-
 ## Get started
 
-```bash
-yarn start
-```
+This project is built using boilerplate git clone https://github.com/notrab/create-react-app-redux.git
 
-This boilerplate is built using [create-react-app](https://github.com/facebook/create-react-app) so you will want to read the User Guide for more goodies.
+## Link design
+
+https://wireframepro.mockflow.com/view/Mdab887a4c13f1076aad51db6687a2c8e1593539076138#/page/3d47feb9951d457bbdc7e64b49f9f904
+
+## Description
+
+This is Todoapp from design to code
